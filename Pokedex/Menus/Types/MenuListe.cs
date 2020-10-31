@@ -7,7 +7,7 @@ namespace Pokedex.Menus.Instances
     class MenuListe<T> : MenuKeyed
     {
 
-        private static int MAX_PER_PAGE = 30;
+        private static int MAX_PER_PAGE = 10;
         private int index = 0;
         private int row = 0;
         private DataFactory<T> factory;
@@ -56,16 +56,6 @@ namespace Pokedex.Menus.Instances
                     Console.ResetColor();
                 }
             }
-
-
-            //for (int i = 0; i < MAX_PER_PAGE; i++)
-            //{
-            //int id = index * MAX_PER_PAGE  + i;
-            //Console.ForegroundColor = row == i ? ConsoleColor.Cyan : ConsoleColor.White;
-            //T item = factory.GetData(urlData + id);
-            //Console.WriteLine("   " + (object.Equals(item, default(T)) ? "Donnée introuvable." : item.ToString()));
-            //    Console.ResetColor();
-            //}
 
             Console.WriteLine(" ");
             ColorConsole.WriteLine("─────────── COMMANDES ───────────", ConsoleColor.White);
