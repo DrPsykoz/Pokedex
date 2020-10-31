@@ -8,12 +8,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex", "Pokedex\Pokedex.
 		{68CB4CF7-ACBF-435B-962E-FADDB4FEA865} = {68CB4CF7-ACBF-435B-962E-FADDB4FEA865}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexData", "PokedexData\PokedexData.csproj", "{68CB4CF7-ACBF-435B-962E-FADDB4FEA865}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokedexData", "PokedexData\PokedexData.csproj", "{68CB4CF7-ACBF-435B-962E-FADDB4FEA865}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5D190BCA-DB7F-4468-AB06-7CF530A3089F} = {5D190BCA-DB7F-4468-AB06-7CF530A3089F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexModels", "PokedexModels\PokedexModels.csproj", "{5D190BCA-DB7F-4468-AB06-7CF530A3089F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokedexModels", "PokedexModels\PokedexModels.csproj", "{5D190BCA-DB7F-4468-AB06-7CF530A3089F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexUnitTest", "PokedexUnitTest\PokedexUnitTest.csproj", "{9D215DE2-490D-4E65-BCF3-065813F2DD21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5D190BCA-DB7F-4468-AB06-7CF530A3089F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D190BCA-DB7F-4468-AB06-7CF530A3089F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D190BCA-DB7F-4468-AB06-7CF530A3089F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D215DE2-490D-4E65-BCF3-065813F2DD21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D215DE2-490D-4E65-BCF3-065813F2DD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D215DE2-490D-4E65-BCF3-065813F2DD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D215DE2-490D-4E65-BCF3-065813F2DD21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

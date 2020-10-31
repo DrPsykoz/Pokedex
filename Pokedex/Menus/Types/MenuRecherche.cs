@@ -80,6 +80,7 @@ namespace Pokedex.Menus.Instances
             else
             {
                 ColorConsole.WriteLine($"Quel est le nom du {typeof(T).Name} a rechercher ?", ConsoleColor.White);
+                Console.WriteLine("");
                 ColorConsole.WriteLine($"   {input}|", ConsoleColor.Yellow);
 
                 Console.WriteLine(" ");
