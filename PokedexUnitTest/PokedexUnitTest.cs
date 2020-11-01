@@ -1,6 +1,7 @@
 ﻿using Pokedex;
 using Pokedex.Models;
 using Pokedex.Utils;
+using PokedexModels.Models;
 using System;
 
 namespace PokedexUnitTest
@@ -22,6 +23,12 @@ namespace PokedexUnitTest
             //ObjectDisplay<Pokemon>.displayObject(pokemonFromID);
 
             //Console.WriteLine(pokemonFromID.Species.url);
+
+            DataFactory<PokemonEvolutionChain> FactoryEvolutionChain = new DataFactory<PokemonEvolutionChain>();
+
+            PokemonEvolutionChain firstChain = FactoryEvolutionChain.GetData(PokemonEvolutionChain.URL_GET_ID + 140);
+
+            Console.WriteLine(firstChain);
 
         }
     }

@@ -47,7 +47,6 @@ namespace Pokedex.Menus.Instances
 
         public override void Run()
         {
-            Console.WriteLine("AFFICHAGE MENU");
             if(items == null)
             {
                 ColorConsole.WriteLine("   Chargement des données en cours...", ConsoleColor.White);
@@ -102,8 +101,7 @@ namespace Pokedex.Menus.Instances
                         row++;
                     break;
                 case ConsoleKey.Enter:
-                    int id = index * MAX_PER_PAGE + row;
-                    T item = factory.GetData(urlData + id);
+                    T item = items[row];
                     if(!object.Equals(item, default(T)))
                         Pokedex.CURRENT_MENU = new MenuInformations<T>(item, this);
                     break;
