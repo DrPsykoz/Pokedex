@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace PokedexModels
+﻿namespace PokedexModels
 {
     public class PokedexModels
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Menus.Instances
 {
-    class MenuListe<T> : MenuKeyed
+    class MenuListe<T> : Menu
     {
 
         private static int MAX_PER_PAGE = 10;
@@ -14,7 +14,7 @@ namespace Pokedex.Menus.Instances
         private string urlData;
         private T[] items;
 
-        public MenuListe(DataFactory<T> factory, string urlData) : base("Liste de " + typeof(T).Name, ConsoleKey.NumPad1)
+        public MenuListe(DataFactory<T> factory, string urlData) : base("Liste de " + typeof(T).Name)
         {
             this.factory = factory;
             this.urlData = urlData;
@@ -42,13 +42,13 @@ namespace Pokedex.Menus.Instances
         public override void run()
         {
 
-            if(items == null)
+            if (items == null)
             {
                 ColorConsole.WriteLine("   Chargement des données en cours...", ConsoleColor.White);
-            } 
+            }
             else
             {
-                for(int i = 0; i < items.Length; i++)
+                for (int i = 0; i < items.Length; i++)
                 {
                     T item = items[i];
                     Console.ForegroundColor = row == i ? ConsoleColor.Cyan : ConsoleColor.White;
@@ -78,7 +78,7 @@ namespace Pokedex.Menus.Instances
                         index--;
                         loadData();
                     }
-                        
+
                     break;
                 case ConsoleKey.RightArrow:
                     index++;
@@ -95,7 +95,7 @@ namespace Pokedex.Menus.Instances
                 case ConsoleKey.Enter:
                     int id = index * MAX_PER_PAGE + row;
                     T item = factory.GetData(urlData + id);
-                    if(!object.Equals(item, default(T)))
+                    if (!object.Equals(item, default(T)))
                         Pokedex.CURRENT_MENU = new MenuInformations<T>(item, this);
                     break;
                 case ConsoleKey.Spacebar:

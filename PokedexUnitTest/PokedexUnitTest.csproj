@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PokedexData\PokedexData.csproj" />
+    <ProjectReference Include="..\PokedexModels\PokedexModels.csproj" />
+    <ProjectReference Include="..\Pokedex\Pokedex.csproj" />
+  </ItemGroup>
+
 </Project>

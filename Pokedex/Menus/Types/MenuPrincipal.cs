@@ -1,42 +1,21 @@
 ﻿using Pokedex.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Pokedex.Menus
 {
-    class MenuPrincipal : MenuKeyed
+    class MenuPrincipal : Menu
     {
         int row = 1;
 
-        public MenuPrincipal() : base("Menu Principal", ConsoleKey.Spacebar){}
+        public MenuPrincipal() : base("Menu Principal") { }
 
         public override void run()
         {
-            var size = from menu in MenuManager.MENUS
-                       orderby menu.AccessKey.ToString().Length
-                       select menu.AccessKey.ToString().Length;
 
-            int keySize = size.Last() + 1;
-
-
-            for(int i = 1; i < MenuManager.MENUS.Count; i++)
+            for (int i = 1; i < MenuManager.MENUS.Count; i++)
             {
-                MenuKeyed menu = MenuManager.MENUS[i];
-
-                int currentKeySize = menu.AccessKey.ToString().Length;
-                string keyString = row == i ? " " + menu.AccessKey.ToString() : menu.AccessKey.ToString();
-
-                ColorConsole.Write($" {keyString}", row == i ? ConsoleColor.Cyan : ConsoleColor.White);
-
-                while (currentKeySize < keySize)
-                {
-                    Console.Write(" ");
-                    currentKeySize++;
-                }
-
-                Console.WriteLine($"| {menu.Title}");
+                Menu menu = MenuManager.MENUS[i];
+                ColorConsole.WriteLine(new string(' ', row == i ? 2 : 1) + $" {menu.Title}", row == i ? ConsoleColor.Cyan : ConsoleColor.White);
             }
 
             Console.WriteLine(" ");

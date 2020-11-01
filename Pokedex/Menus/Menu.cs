@@ -1,7 +1,5 @@
 ﻿using Pokedex.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Pokedex.Menus
 {
@@ -34,8 +32,7 @@ namespace Pokedex.Menus
             IsDisplaying = true;
             NeedToBeRefreshed = false;
             Console.Clear();
-            ColorConsole.Write("[POKE", ConsoleColor.Red);
-            ColorConsole.Write("DEX]   ", ConsoleColor.White);
+            ColorConsole.Write("[POKE", "DEX]   ", ConsoleColor.Red, ConsoleColor.White);
             ColorConsole.WriteLine(Title, ConsoleColor.Yellow);
             ColorConsole.WriteLine("─────────────────────────────────", ConsoleColor.White);
             Console.WriteLine(" ");

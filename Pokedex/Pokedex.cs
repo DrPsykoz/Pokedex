@@ -1,9 +1,6 @@
 ﻿using Pokedex.Menus;
 using Pokedex.Models;
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Windows.Input;
 
 namespace Pokedex
 {
@@ -11,6 +8,7 @@ namespace Pokedex
     {
 
         public static Menu CURRENT_MENU = MenuManager.MENUS[0];
+        public static DataFactory<Pokemon> FACTORY = new DataFactory<Pokemon>();
 
         static void Main(string[] args)
         {

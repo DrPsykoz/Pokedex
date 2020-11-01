@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Pokedex.Utils
 {
@@ -14,6 +12,7 @@ namespace Pokedex.Utils
             Console.WriteLine(text);
             Console.ForegroundColor = old;
         }
+
         public static void WriteLine(string text, string text2, ConsoleColor color, ConsoleColor color2)
         {
             ConsoleColor old = Console.ForegroundColor;
@@ -24,12 +23,21 @@ namespace Pokedex.Utils
             Console.ForegroundColor = old;
         }
 
-
         public static void Write(string text, ConsoleColor color)
         {
             ConsoleColor old = Console.ForegroundColor;
             Console.ForegroundColor = color;
             Console.Write(text);
+            Console.ForegroundColor = old;
+        }
+
+        public static void Write(string text, string text2, ConsoleColor color, ConsoleColor color2)
+        {
+            ConsoleColor old = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            Console.Write(text);
+            Console.ForegroundColor = color2;
+            Console.Write(text2);
             Console.ForegroundColor = old;
         }
 

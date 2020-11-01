@@ -1,9 +1,5 @@
 ﻿using Pokedex.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace Pokedex.Menus.Instances
 {
@@ -24,7 +20,7 @@ namespace Pokedex.Menus.Instances
 
             // Affichage des proprietes de l'objet
             ObjectDisplay<T>.displayObject(value);
-                
+
 
             Console.WriteLine($"");
             ColorConsole.WriteLine("─────────── COMMANDES ───────────", ConsoleColor.White);
