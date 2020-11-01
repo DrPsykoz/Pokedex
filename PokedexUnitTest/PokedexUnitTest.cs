@@ -11,25 +11,66 @@ namespace PokedexUnitTest
         static void Main(string[] args)
         {
 
+            /*
+             *      Pokemons
+             */
 
-            //Pokemon pokemonFromID = PokemonManager.FromID(1);
+            Console.WriteLine("───────────────────────────────────────────────────────");
+            Console.WriteLine("Lancement des tests pour les Pokemons");
+            Console.WriteLine("───────────────────────────────────────────────────────");
 
-            //Console.WriteLine(pokemonFromID);
+            DataFactory<Pokemon> FactoryPokemon = new DataFactory<Pokemon>();
 
-            //Pokemon pokemonFromName = PokemonManager.FromName("bulbasaur");
 
-            //Console.WriteLine(pokemonFromName);
 
-            //ObjectDisplay<Pokemon>.displayObject(pokemonFromID);
+            Console.WriteLine("\n → Recuperation d'un pokemon via son ID (id = 1)");
 
-            //Console.WriteLine(pokemonFromID.Species.url);
+            Pokemon pokemonFromID = FactoryPokemon.GetData(Pokemon.URL_GET_ID + 1);
+
+            displayTestExecution(pokemonFromID != default);
+            Console.WriteLine("   Donnée récupérée: " + pokemonFromID);
+
+
+
+            Console.WriteLine("\n → Recuperation d'un pokemon via son Nom (name = bulbasaur)");
+
+            Pokemon pokemonFromName = FactoryPokemon.GetData(Pokemon.URL_GET_NAME + "bulbasaur");
+
+            displayTestExecution(pokemonFromName != default);
+            Console.WriteLine("   Donnée récupérée: " + pokemonFromName);
+
+
+
+            Console.WriteLine("\n → Affichage des données d'un pokemon via réflection (pokemon = bulbasaur)");
+
+            ObjectDisplay<Pokemon>.displayObject(pokemonFromID);
+
+
+            /*
+             *      Chaines d'evolutions
+             */
+
+            Console.WriteLine("\n\n───────────────────────────────────────────────────────");
+            Console.WriteLine("Lancement des tests pour les Chaines D'evolution");
+            Console.WriteLine("───────────────────────────────────────────────────────");
 
             DataFactory<PokemonEvolutionChain> FactoryEvolutionChain = new DataFactory<PokemonEvolutionChain>();
 
+            Console.WriteLine("\n → Recuperation d'une chaine d'evolution via son ID (id = 140)");
+
             PokemonEvolutionChain firstChain = FactoryEvolutionChain.GetData(PokemonEvolutionChain.URL_GET_ID + 140);
 
-            Console.WriteLine(firstChain);
+            displayTestExecution(firstChain != default);
+            Console.WriteLine("   Donnée récupérée: " + firstChain);
 
+        }
+
+        public static void displayTestExecution(bool success)
+        {
+            if (success)
+                ColorConsole.WriteLine("   TEST REUSSI", ConsoleColor.Green);
+            else
+                ColorConsole.WriteLine("   TEST ECHOUÉ", ConsoleColor.Red);
         }
     }
 }

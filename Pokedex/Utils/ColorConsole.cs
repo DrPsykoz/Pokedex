@@ -2,7 +2,7 @@
 
 namespace Pokedex.Utils
 {
-    class ColorConsole
+    public class ColorConsole
     {
 
         public static void WriteLine(string text, ConsoleColor color)
