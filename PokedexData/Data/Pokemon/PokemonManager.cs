@@ -1,5 +1,5 @@
-﻿using Pokedex.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Pokedex.Models;
 
 namespace Pokedex
 {
@@ -8,7 +8,7 @@ namespace Pokedex
 
         public static DataFactory<Pokemon> FACTORY = new DataFactory<Pokemon>();
 
-
+        
 
         public static List<Pokemon> GetPokemons() { return FACTORY.GetCachedData(); }
 

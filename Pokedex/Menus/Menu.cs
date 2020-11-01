@@ -5,8 +5,8 @@ namespace Pokedex.Menus
 {
     abstract class Menu
     {
-        private Boolean NeedToBeRefreshed { get; set; }
-        private Boolean IsDisplaying { get; set; }
+        protected bool NeedToBeRefreshed { get; set; }
+        protected bool IsDisplaying { get; set; }
 
         public string Title { get; }
 
@@ -16,19 +16,20 @@ namespace Pokedex.Menus
             this.NeedToBeRefreshed = false;
         }
 
-        public abstract void run();
-        public abstract void applyKey(ConsoleKey key);
+        public abstract void Run();
+        public abstract void ApplyKey(ConsoleKey key);
 
         public void RequestRefresh()
         {
             if (IsDisplaying)
                 this.NeedToBeRefreshed = true;
             else if (Pokedex.CURRENT_MENU.Equals(this))
-                display();
+                Display();
         }
 
-        public void display()
+        public void Display()
         {
+            if (IsDisplaying) return;
             IsDisplaying = true;
             NeedToBeRefreshed = false;
             Console.Clear();
@@ -36,10 +37,12 @@ namespace Pokedex.Menus
             ColorConsole.WriteLine(Title, ConsoleColor.Yellow);
             ColorConsole.WriteLine("─────────────────────────────────", ConsoleColor.White);
             Console.WriteLine(" ");
-            run();
+            Run();
             IsDisplaying = false;
+
             if (NeedToBeRefreshed)
-                display();
+                Display();
+                
         }
 
     }

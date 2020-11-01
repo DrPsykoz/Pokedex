@@ -19,9 +19,9 @@ namespace Pokedex
 
             do
             {
-                CURRENT_MENU.display();
+                CURRENT_MENU.Display();
                 input = Console.ReadKey();
-                CURRENT_MENU.applyKey(input.Key);
+                CURRENT_MENU.ApplyKey(input.Key);
             } while (!input.Key.Equals(ConsoleKey.Escape));
 
         }

@@ -1,4 +1,7 @@
-﻿namespace PokedexModels
+﻿using System;
+
+
+namespace PokedexModels
 {
     public class PokedexModels
     {

@@ -7,15 +7,15 @@ namespace Pokedex.Menus
     {
         int row = 1;
 
-        public MenuPrincipal() : base("Menu Principal") { }
+        public MenuPrincipal() : base("Menu Principal"){}
 
-        public override void run()
+        public override void Run()
         {
 
-            for (int i = 1; i < MenuManager.MENUS.Count; i++)
+            for(int i = 1; i < MenuManager.MENUS.Count; i++)
             {
                 Menu menu = MenuManager.MENUS[i];
-                ColorConsole.WriteLine(new string(' ', row == i ? 2 : 1) + $" {menu.Title}", row == i ? ConsoleColor.Cyan : ConsoleColor.White);
+                ColorConsole.WriteLine(new string(' ',row == i ? 2 : 1) + $" {menu.Title}", row == i ? ConsoleColor.Cyan : ConsoleColor.White);
             }
 
             Console.WriteLine(" ");
@@ -27,7 +27,7 @@ namespace Pokedex.Menus
 
         }
 
-        public override void applyKey(ConsoleKey key)
+        public override void ApplyKey(ConsoleKey key)
         {
             switch (key)
             {

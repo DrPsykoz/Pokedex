@@ -8,22 +8,27 @@ namespace Pokedex.Menus.Instances
     {
 
         private static int MAX_PER_PAGE = 10;
+
         private int index = 0;
         private int row = 0;
+        private T[] items;
+        private bool IsLoadingData;
+
         private DataFactory<T> factory;
         private string urlData;
-        private T[] items;
 
         public MenuListe(DataFactory<T> factory, string urlData) : base("Liste de " + typeof(T).Name)
         {
             this.factory = factory;
             this.urlData = urlData;
+            this.items = null;
 
-            loadData();
+            LoadData();
         }
 
-        public void loadData()
+        public void LoadData()
         {
+            this.IsLoadingData = true;
             Task.Run(() =>
             {
                 items = null;
@@ -35,20 +40,21 @@ namespace Pokedex.Menus.Instances
                 {
                     items = datas.Result;
                     RequestRefresh();
+                    this.IsLoadingData = false;
                 });
             });
         }
 
-        public override void run()
+        public override void Run()
         {
-
-            if (items == null)
+            Console.WriteLine("AFFICHAGE MENU");
+            if(items == null)
             {
                 ColorConsole.WriteLine("   Chargement des données en cours...", ConsoleColor.White);
-            }
+            } 
             else
             {
-                for (int i = 0; i < items.Length; i++)
+                for(int i = 0; i < items.Length; i++)
                 {
                     T item = items[i];
                     Console.ForegroundColor = row == i ? ConsoleColor.Cyan : ConsoleColor.White;
@@ -68,21 +74,24 @@ namespace Pokedex.Menus.Instances
 
         }
 
-        public override void applyKey(ConsoleKey key)
+        public override void ApplyKey(ConsoleKey key)
         {
             switch (key)
             {
                 case ConsoleKey.LeftArrow:
-                    if (index > 0)
+                    if (index > 0 && !this.IsLoadingData && !IsDisplaying)
                     {
                         index--;
-                        loadData();
+                        LoadData();
                     }
-
+                        
                     break;
                 case ConsoleKey.RightArrow:
-                    index++;
-                    loadData();
+                    if (!this.IsLoadingData && !IsDisplaying)
+                    {
+                        index++;
+                        LoadData();
+                    }
                     break;
                 case ConsoleKey.UpArrow:
                     if (row > 0)
@@ -95,7 +104,7 @@ namespace Pokedex.Menus.Instances
                 case ConsoleKey.Enter:
                     int id = index * MAX_PER_PAGE + row;
                     T item = factory.GetData(urlData + id);
-                    if (!object.Equals(item, default(T)))
+                    if(!object.Equals(item, default(T)))
                         Pokedex.CURRENT_MENU = new MenuInformations<T>(item, this);
                     break;
                 case ConsoleKey.Spacebar:

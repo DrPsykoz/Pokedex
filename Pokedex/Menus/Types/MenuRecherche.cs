@@ -1,5 +1,7 @@
-﻿using Pokedex.Utils;
+﻿using Pokedex.Models;
+using Pokedex.Utils;
 using System;
+using System.ComponentModel;
 
 namespace Pokedex.Menus.Instances
 {
@@ -13,24 +15,23 @@ namespace Pokedex.Menus.Instances
         private DataFactory<T> Factory;
         private string BaseUrl;
 
-        public MenuRecherche(DataFactory<T> factory, string baseUrl) : base("Rechercher un " + typeof(T).Name)
-        {
+        public MenuRecherche(DataFactory<T> factory, string baseUrl) : base("Rechercher un " + typeof(T).Name){
             this.Factory = factory;
             this.BaseUrl = baseUrl;
         }
 
-        public override void applyKey(ConsoleKey key)
+        public override void ApplyKey(ConsoleKey key)
         {
             switch (key)
             {
                 case ConsoleKey.Enter:
-                    if (!Equals(item, default(T)))
+                    if(!Equals(item, default(T)))
                     {
                         Pokedex.CURRENT_MENU = new MenuInformations<T>(item, this);
                         isSearching = false;
                         input = "";
                         item = default;
-                    }
+                    } 
                     else if (isSearching && Equals(item, default(T)))
                     {
                         isSearching = false;
@@ -47,17 +48,17 @@ namespace Pokedex.Menus.Instances
                     Pokedex.CURRENT_MENU = MenuManager.FromType<MenuPrincipal>();
                     break;
                 case ConsoleKey.Backspace:
-                    if (input.Length > 0)
+                    if(input.Length > 0)
                         input = input.Substring(0, input.Length - 1);
                     break;
                 default:
                     input += key.ToString();
                     break;
             }
-
+            
         }
 
-        public override void run()
+        public override void Run()
         {
             if (isSearching)
             {
@@ -70,12 +71,12 @@ namespace Pokedex.Menus.Instances
 
                 Console.WriteLine(" ");
                 ColorConsole.WriteLine("─────────── COMMANDES ───────────", ConsoleColor.White);
-                if (item != null)
+                if(item != null)
                     ColorConsole.WriteLine("ENTER    ", "Acceder aux details du " + typeof(T).Name, ConsoleColor.Yellow, ConsoleColor.White);
                 else
                     ColorConsole.WriteLine("ENTER    ", "Modifier le nom a rechercher", ConsoleColor.Yellow, ConsoleColor.White);
                 ColorConsole.WriteLine("SPACEBAR ", "Retour au menu principal", ConsoleColor.Yellow, ConsoleColor.White);
-            }
+            } 
             else
             {
                 ColorConsole.WriteLine($"Quel est le nom du {typeof(T).Name} a rechercher ?", ConsoleColor.White);

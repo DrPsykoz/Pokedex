@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PokedexModels.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Pokedex.Models

@@ -2,8 +2,12 @@
 using Pokedex.Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Pokedex
@@ -24,7 +28,7 @@ namespace Pokedex
         {
             T[] datas = new T[urls.Length];
 
-            for (int i = 0; i < urls.Length; i++)
+            for(int i = 0; i < urls.Length; i++)
                 datas[i] = GetData(urls[i]);
 
             return Task.FromResult(datas);
@@ -43,7 +47,7 @@ namespace Pokedex
                     new Exception("Impossible de recuperer la data via l'API, url = " + url);
                     return default;
                 }
-
+                    
 
                 T value = JsonConvert.DeserializeObject<T>(json);
 
@@ -55,7 +59,7 @@ namespace Pokedex
                 }
                 else
                     data.Value = value;
-            }
+            }   
 
             return data.Value;
         }
@@ -65,8 +69,8 @@ namespace Pokedex
             try
             {
                 return webClient.DownloadString(new Uri(url));
-            }
-            catch (Exception e)
+            } 
+            catch (Exception)
             {
                 return null;
             }

@@ -1,4 +1,9 @@
-﻿namespace PokedexUnitTest
+﻿using Pokedex;
+using Pokedex.Models;
+using Pokedex.Utils;
+using System;
+
+namespace PokedexUnitTest
 {
     class PokedexUnitTest
     {

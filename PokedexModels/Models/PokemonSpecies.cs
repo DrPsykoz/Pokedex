@@ -1,4 +1,8 @@
-﻿namespace PokedexModels.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PokedexModels.Models
 {
     public class PokemonSpecies
     {

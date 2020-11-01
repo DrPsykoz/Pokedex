@@ -15,12 +15,12 @@ namespace Pokedex.Menus.Instances
             this.lastMenu = lastMenu;
         }
 
-        public override void run()
+        public override void Run()
         {
 
             // Affichage des proprietes de l'objet
             ObjectDisplay<T>.displayObject(value);
-
+                
 
             Console.WriteLine($"");
             ColorConsole.WriteLine("─────────── COMMANDES ───────────", ConsoleColor.White);
@@ -28,7 +28,7 @@ namespace Pokedex.Menus.Instances
             ColorConsole.WriteLine($"Retourner sur le menu {lastMenu.Title}", ConsoleColor.White);
         }
 
-        public override void applyKey(ConsoleKey key)
+        public override void ApplyKey(ConsoleKey key)
         {
             if (key.Equals(ConsoleKey.Spacebar))
             {
