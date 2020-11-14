@@ -19,13 +19,10 @@ namespace PokedexUnitTest
             Console.WriteLine("Lancement des tests pour les Pokemons");
             Console.WriteLine("───────────────────────────────────────────────────────");
 
-            DataFactory<Pokemon> FactoryPokemon = new DataFactory<Pokemon>();
-
-
 
             Console.WriteLine("\n → Recuperation d'un pokemon via son ID (id = 1)");
 
-            Pokemon pokemonFromID = FactoryPokemon.GetData(Pokemon.URL_GET_ID + 1);
+            Pokemon pokemonFromID = PokemonManager.GetPokemon(1).Result;
 
             displayTestExecution(pokemonFromID != default);
             Console.WriteLine("   Donnée récupérée: " + pokemonFromID);
@@ -34,16 +31,20 @@ namespace PokedexUnitTest
 
             Console.WriteLine("\n → Recuperation d'un pokemon via son Nom (name = bulbasaur)");
 
-            Pokemon pokemonFromName = FactoryPokemon.GetData(Pokemon.URL_GET_NAME + "bulbasaur");
+            Pokemon pokemonFromName = PokemonManager.GetPokemon("bulbasaur").Result;
 
             displayTestExecution(pokemonFromName != default);
             Console.WriteLine("   Donnée récupérée: " + pokemonFromName);
 
 
 
-            Console.WriteLine("\n → Affichage des données d'un pokemon via réflection (pokemon = bulbasaur)");
+            Console.WriteLine("\n → Recuperation d'un pokemon en entier via son ID et affichage via réflection (pokemon = bulbasaur)");
 
-            ObjectDisplay<Pokemon>.displayObject(pokemonFromID);
+            Pokemon pokemonFull = PokemonManager.GetPokemon(1).Result;
+
+            displayTestExecution(pokemonFull != default);
+            Console.WriteLine("   Donnée récupérée: \n");
+            ObjectDisplay<Pokemon>.displayObject(pokemonFull);
 
 
             /*

@@ -4,50 +4,42 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Menus.Instances
 {
-    class MenuListe<T> : Menu
+    public abstract class MenuListe<T> : Menu
     {
 
-        private static int MAX_PER_PAGE = 10;
+        protected static int MAX_PER_PAGE = 10;
 
         private int index = 0;
         private int row = 0;
         private T[] items;
         private bool IsLoadingData;
 
-        private DataFactory<T> factory;
-        private string urlData;
-
-        public MenuListe(DataFactory<T> factory, string urlData) : base("Liste de " + typeof(T).Name)
+        public MenuListe() : base("Liste de " + typeof(T).Name)
         {
-            this.factory = factory;
-            this.urlData = urlData;
-            this.items = null;
-
+            this.items = new T[MAX_PER_PAGE];
             LoadData();
         }
+
+        public void SetData(T[] data) => this.items = data;
 
         public void LoadData()
         {
             this.IsLoadingData = true;
             Task.Run(() =>
             {
-                items = null;
-                string[] urls = new string[MAX_PER_PAGE];
+                this.items = new T[MAX_PER_PAGE];
                 for (int i = 0; i < MAX_PER_PAGE; i++)
-                    urls[i] = urlData + (index * MAX_PER_PAGE + i);
-
-                factory.GetDataList(urls).ContinueWith(datas =>
-                {
-                    items = datas.Result;
-                    RequestRefresh();
-                    this.IsLoadingData = false;
-                });
+                    items[i] = GetData(index * MAX_PER_PAGE + i);
+                this.IsLoadingData = false;
+                RequestRefresh();
             });
         }
 
+        public abstract T GetData(int index);
+
         public override void Run()
         {
-            if(items == null)
+            if(IsLoadingData)
             {
                 ColorConsole.WriteLine("   Chargement des données en cours...", ConsoleColor.White);
             } 

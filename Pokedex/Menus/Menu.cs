@@ -3,7 +3,7 @@ using System;
 
 namespace Pokedex.Menus
 {
-    abstract class Menu
+    public abstract class Menu
     {
         protected bool NeedToBeRefreshed { get; set; }
         protected bool IsDisplaying { get; set; }

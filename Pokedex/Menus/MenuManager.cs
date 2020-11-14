@@ -11,8 +11,7 @@ namespace Pokedex.Menus
         public static List<Menu> MENUS = new List<Menu>()
         {
             new MenuPrincipal(),
-            new MenuListe<Pokemon>(PokemonManager.FACTORY, Pokemon.URL_GET_ID),
-            new MenuListe<PokemonEvolutionChain>(new DataFactory<PokemonEvolutionChain>(), PokemonEvolutionChain.URL_GET_ID),
+            new MenuPokemonListe(),
             new MenuRecherche<Pokemon>(PokemonManager.FACTORY, Pokemon.URL_GET_NAME)
         };
 

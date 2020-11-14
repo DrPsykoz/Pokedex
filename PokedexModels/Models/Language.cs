@@ -2,13 +2,10 @@
 
 namespace PokedexModels.Models
 {
-    public class NamedEmptyData
+    public class Language
     {
-
         [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("url")]
-        public string Url { get; set; }
 
     }
 }

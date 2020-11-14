@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PokedexModels.Models;
+using PokedexModels.Models.Pokemon;
 using System;
 using System.Collections.Generic;
 
@@ -12,30 +13,18 @@ namespace Pokedex.Models
         public static string URL_GET_NAME = "https://pokeapi.co/api/v2/pokemon/";
 
         [JsonProperty("id")]
-        public int ID { get; }
+        public int ID { get; set; }
         [JsonProperty("name")]
-        public string Name { get; }
-        [JsonProperty("weight")]
-        public int Weight { get; }
-        [JsonProperty("height")]
-        public int Height { get; }
+        public string Name { get; set; }
         [JsonProperty("types")]
         public List<SlotType> Types { get; set; }
+        public PokemonDescription Description { get; set; }
+        public PokemonEvolutionChain EvolutionChain { get; set; }
         [JsonProperty("species")]
-        public PokemonSpecies Species { get; set; }
+        private NamedEmptyData SpeciesURL { get; set; }
 
-        public Pokemon(int id, string name, int weight, int height)
-        {
-            this.ID = id;
-            this.Name = name;
-            this.Weight = weight;
-            this.Height = height;
-        }
+        public string GetSpeciesURL() => SpeciesURL.Url;
 
-
-        public override string ToString()
-        {
-            return $"<{ID}> {Name}";
-        }
+        public override string ToString() => $"<{ID}> {Name}";
     }
 }

@@ -25,6 +25,6 @@ namespace Pokedex.Data
             this.Value = value;
         }
 
-        public Boolean NeedRefresh() { return (DateTime.Now - LastCall).TotalSeconds > 30; }
+        public Boolean NeedRefresh() { return (DateTime.Now - LastCall).TotalSeconds > 60; }
     }
 }
