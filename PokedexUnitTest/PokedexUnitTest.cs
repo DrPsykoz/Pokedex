@@ -1,8 +1,12 @@
-﻿using Pokedex;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Pokedex;
 using Pokedex.Models;
 using Pokedex.Utils;
 using PokedexModels.Models;
 using System;
+using System.Collections.Generic;
+using Xunit;
 
 namespace PokedexUnitTest
 {
@@ -10,7 +14,6 @@ namespace PokedexUnitTest
     {
         static void Main(string[] args)
         {
-
             /*
              *      Pokemons
              */
